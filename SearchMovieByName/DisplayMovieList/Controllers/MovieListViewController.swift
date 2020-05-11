@@ -70,8 +70,8 @@ extension MovieListViewController: UISearchBarDelegate,SearchMovieNameViewDelega
     
     func errorHandler(with error: SearchMovieErrors) {
         
-        let alert = UIAlertController(title: "Alert", message: error.errorDescription, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        let alert = UIAlertController(title: "Sorry!", message: error.errorDescription, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
