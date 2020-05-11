@@ -8,10 +8,11 @@
 
 import Foundation
 @testable import SearchMovieByName
-class MockMovieNameValidator : SearchedMovieNameValidatorProtocol {
+
+class MockMovieNameValidator: SearchedMovieNameValidatorProtocol {
     var isMovieNameValid = false
     
-    func isSearchMovieNameValid(movieName name : String) -> Bool{
+    func isSearchMovieNameValid(movieName name: String) -> Bool{
         if name.count >= 3 {
             isMovieNameValid = true
         }

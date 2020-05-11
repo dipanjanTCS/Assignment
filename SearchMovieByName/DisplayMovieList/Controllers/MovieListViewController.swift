@@ -12,13 +12,13 @@ import SwiftUI
 class MovieListViewController: UITableViewController {
     
     @IBOutlet weak var movieNameSearchBar: UISearchBar!
-    var searchMovieListPresenter : SearchMovieListPresenterProtocol?
     
+    var searchMovieListPresenter: SearchMovieListPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.searchMovieListPresenter == nil{
+        if self.searchMovieListPresenter == nil {
             let searchMovieNameValidator = SearchMovieNameValidator()
             let searchMovieNameWebService = SearchMovieNameWebService()
             searchMovieListPresenter = SearchMovieListPresenter(fromMovieNameValidator: searchMovieNameValidator, webService: searchMovieNameWebService, delegate: self)
@@ -28,7 +28,7 @@ class MovieListViewController: UITableViewController {
     
     @IBSegueAction func goToMovieDetails(_ coder: NSCoder, sender: Any?) -> UIViewController? {
         
-        guard let selectedIndexPath = self.tableView.indexPathForSelectedRow else{
+        guard let selectedIndexPath = self.tableView.indexPathForSelectedRow else {
             fatalError("TableView is not selected")
         }
         
@@ -51,7 +51,6 @@ class MovieListViewController: UITableViewController {
         return searchMovieListPresenter.rownumbers()
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let searchMovieListPresenter = self.searchMovieListPresenter else {
@@ -60,18 +59,13 @@ class MovieListViewController: UITableViewController {
         return searchMovieListPresenter.prepareCell(for: tableView, cellForRowAt: indexPath)
         
     }
-    
-    
-    
-    
 }
 
-extension MovieListViewController : UISearchBarDelegate,SearchMovieNameViewDelegateProtocol{
+extension MovieListViewController: UISearchBarDelegate,SearchMovieNameViewDelegateProtocol {
     //MARK:- SearchMovieNameViewDelegateProtocol Methods
     
     func successfulyFetchedMovieList() {
         self.tableView.reloadData()
-        
     }
     
     func errorHandler(with error: SearchMovieErrors) {
@@ -79,16 +73,11 @@ extension MovieListViewController : UISearchBarDelegate,SearchMovieNameViewDeleg
         let alert = UIAlertController(title: "Alert", message: error.errorDescription, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-        
     }
     
     //MARK:- UISearchBarDelegate Methods
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.movieNameSearchBar.endEditing(true)
         self.searchMovieListPresenter?.processSearchedMovieName(with: searchBar.text ?? "")
-        
-    }
-    
-    
-    
+    }    
 }

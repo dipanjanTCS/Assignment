@@ -9,10 +9,13 @@
 import SwiftUI
 
 struct DownloadedImage: View {
-    @ObservedObject var movieDetailPosterLoader : MovieDetailPosterLoader
+    
+    @ObservedObject var movieDetailPosterLoader: MovieDetailPosterLoader
+    
     init(with url: String) {
         self.movieDetailPosterLoader = MovieDetailPosterLoader(with: url)
     }
+    
     var body: some View {
         if let displayImage = self.movieDetailPosterLoader.displayImage {
             return Image(uiImage: displayImage)

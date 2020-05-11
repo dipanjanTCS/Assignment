@@ -9,14 +9,15 @@
 import Foundation
 import UIKit
 
-class MovieDetailPosterLoader : ObservableObject  {
-    @Published var displayImage : UIImage?
+class MovieDetailPosterLoader: ObservableObject {
+    @Published var displayImage: UIImage?
     
     init(with posterUrl: String) {
         self.loadImage(with: posterUrl)
     }
     
-    func loadImage(with urlString: String)  {
+    func loadImage(with urlString: String) {
+        
         guard let url = URL(string: urlString) else {
             self.displayImage = UIImage(systemName: "photo")
             return
@@ -29,10 +30,10 @@ class MovieDetailPosterLoader : ObservableObject  {
                     self.displayImage = UIImage(systemName: "photo")
                     return
             }
+            
             DispatchQueue.main.async {
                 self.displayImage = UIImage(data: data)
             }
         }.resume()
-    }
-    
+    }  
 }

@@ -29,10 +29,9 @@ class MockURLProtocolForMovieList: URLProtocol {
         let stubResponseData = self.readLocalFile(forName: MockURLProtocolForMovieList.fileName ?? "ResponseMovieList")
         if let responseError = MockURLProtocolForMovieList.error {
             self.client?.urlProtocol(self, didFailWithError: responseError)
-        }else{
+        } else {
             self.client?.urlProtocol(self, didLoad: stubResponseData ?? Data())
         }
-        
         self.client?.urlProtocolDidFinishLoading(self)
     }
     
@@ -42,7 +41,7 @@ class MockURLProtocolForMovieList: URLProtocol {
 }
 
 
-extension MockURLProtocolForMovieList{
+extension MockURLProtocolForMovieList {
     
     private func readLocalFile(forName name: String) -> Data? {
         do {
@@ -54,7 +53,6 @@ extension MockURLProtocolForMovieList{
         } catch {
             print(error)
         }
-        
         return nil
     }
 }

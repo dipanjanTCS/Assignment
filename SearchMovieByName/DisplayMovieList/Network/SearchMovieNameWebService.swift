@@ -8,31 +8,29 @@
 
 import Foundation
 
-enum RequestType : String {
+enum RequestType: String {
     case get = "GET"
     case post = "POST"
 }
 
 struct Resource<T: Decodable> {
-    var url : String
-    var sendData : Data?
-    var requestType : RequestType = .get
+    var url: String
+    var sendData: Data?
+    var requestType: RequestType = .get
 }
 
 class SearchMovieNameWebService {
     
-    private var urlSession : URLSession
+    private var urlSession: URLSession
     
-    
-    init(with urlSession : URLSession = .shared) {
+    init(with urlSession: URLSession = .shared) {
         self.urlSession = urlSession
     }
-    
 }
 
-extension SearchMovieNameWebService : SearchMovieNameWebServiceProtocol {
+extension SearchMovieNameWebService: SearchMovieNameWebServiceProtocol {
     
-    func fetchMovieList<T : Decodable>(using resource : Resource<T>?,completion: @escaping (Result<T,SearchMovieErrors>) -> ())  {
+    func fetchMovieList<T: Decodable>(using resource: Resource<T>?,completion: @escaping (Result<T,SearchMovieErrors>) -> ()) {
         guard let resource = resource else {
             completion(.failure(.invalidResource(description: "Sorry! Resource file is not found ")))
             return
@@ -43,13 +41,10 @@ extension SearchMovieNameWebService : SearchMovieNameWebServiceProtocol {
             completion(.failure(.invalidRequestURLString(description: "Sorry! Not a valid url.")))
             return
         }
-        
-        
+ 
         self.urlSession.dataTask(with: url) { (data, response, error) in
-            
-            
-            
-            guard let data = data , error == nil else{
+
+            guard let data = data , error == nil else {
                 DispatchQueue.main.async {
                     completion(.failure(.failedRequest(description: error?.localizedDescription)))
                 }
@@ -66,9 +61,5 @@ extension SearchMovieNameWebService : SearchMovieNameWebServiceProtocol {
             }
             
         }.resume()
-        
     }
-    
-    
-    
 }

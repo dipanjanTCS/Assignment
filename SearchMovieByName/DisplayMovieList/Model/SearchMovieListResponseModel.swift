@@ -10,20 +10,20 @@ import Foundation
 
 import Foundation
 
-enum APIResponse : String, Codable {
+enum APIResponse: String, Codable {
     case True
     case False
 }
 
-struct SearchMovieListResponseModel : Decodable{
-    var searchResult : [SelectedMovieDetailModel]?
-    var totalResults : String
-    var response : APIResponse
+struct SearchMovieListResponseModel: Decodable {
+    var searchResult: [SelectedMovieDetailModel]?
+    var totalResults: String
+    var response: APIResponse
     
 }
 
-extension SearchMovieListResponseModel{
-    enum CodingKeys : String, CodingKey {
+extension SearchMovieListResponseModel {
+    enum CodingKeys: String, CodingKey {
         case searchResult = "Search"
         case totalResults = "totalResults"
         case response = "Response"

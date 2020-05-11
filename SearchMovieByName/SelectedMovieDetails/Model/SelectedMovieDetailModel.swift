@@ -8,18 +8,17 @@
 
 import Foundation
 
-struct SelectedMovieDetailModel : Decodable {
-    var movieTitle : String
-    var movieReleaseYear : String
-    var movieIMDBid : String
-    var movieType : String
-    var moviePosterUrl : String
+struct SelectedMovieDetailModel: Decodable {
+    var movieTitle: String
+    var movieReleaseYear: String
+    var movieIMDBid: String
+    var movieType: String
+    var moviePosterUrl: String
 }
-
 
 extension SelectedMovieDetailModel {
     
-    enum CodingKeys : String,CodingKey {
+    enum CodingKeys: String,CodingKey {
         case movieTitle = "Title"
         case movieReleaseYear = "Year"
         case movieIMDBid = "imdbID"

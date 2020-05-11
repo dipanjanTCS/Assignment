@@ -8,11 +8,12 @@
 
 import Foundation
 import UIKit
-protocol SearchMovieListPresenterProtocol : AnyObject {
-    init(fromMovieNameValidator : SearchedMovieNameValidatorProtocol, webService : SearchMovieNameWebServiceProtocol, delegate : SearchMovieNameViewDelegateProtocol)
-    func processSearchedMovieName(with movieName : String)
+
+protocol SearchMovieListPresenterProtocol: AnyObject {
+    init(fromMovieNameValidator: SearchedMovieNameValidatorProtocol, webService: SearchMovieNameWebServiceProtocol, delegate: SearchMovieNameViewDelegateProtocol)
+    func processSearchedMovieName(with movieName: String)
     func rownumbers() -> Int
     func prepareCell(for tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    func selectedMovieDetails(for indexPathRow : Int) -> SelectedMovieDetailModel
+    func selectedMovieDetails(for indexPathRow: Int) -> SelectedMovieDetailModel
 }
 

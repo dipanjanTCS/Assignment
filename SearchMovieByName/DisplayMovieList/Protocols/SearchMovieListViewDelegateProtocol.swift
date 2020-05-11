@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol SearchMovieNameViewDelegateProtocol : AnyObject {
+protocol SearchMovieNameViewDelegateProtocol: AnyObject {
     func successfulyFetchedMovieList()
-    func errorHandler(with error : SearchMovieErrors)
+    func errorHandler(with error: SearchMovieErrors)
 }

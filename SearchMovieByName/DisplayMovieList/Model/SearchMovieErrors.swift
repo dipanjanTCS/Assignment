@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum SearchMovieErrors : LocalizedError, Equatable {
+enum SearchMovieErrors: LocalizedError, Equatable {
     
-    case invalidRequestURLString(description : String)
-    case invalidResponseModel(description : String)
-    case invalidResource(description : String)
-    case movieNotFound(description : String)
+    case invalidRequestURLString(description: String)
+    case invalidResponseModel(description: String)
+    case invalidResource(description: String)
+    case movieNotFound(description: String)
     case failedRequest(description: String?)
     case inValidMovieName(description: String)
 }
@@ -23,7 +23,7 @@ extension SearchMovieErrors {
         switch self {
         case .failedRequest(let description):
             return description
-        case .movieNotFound(let description) :
+        case .movieNotFound(let description):
             return description
         case .inValidMovieName(let description):
             return description

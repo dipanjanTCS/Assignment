@@ -8,15 +8,13 @@
 
 import Foundation
 
-struct SearchMovieNameValidator : SearchedMovieNameValidatorProtocol{
+struct SearchMovieNameValidator: SearchedMovieNameValidatorProtocol {
     
-    func isSearchMovieNameValid(movieName name : String) -> Bool {
+    func isSearchMovieNameValid(movieName name: String) -> Bool {
         var returnValue = false
         if name.count >= 3 {
             returnValue = true
         }
         return returnValue
     }
-    
-    
 }

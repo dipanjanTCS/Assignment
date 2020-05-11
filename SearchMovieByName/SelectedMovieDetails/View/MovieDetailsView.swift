@@ -9,12 +9,12 @@
 import SwiftUI
 
 struct MovieDetailsView: View {
-    let selectedMovieDetailModel : SelectedMovieDetailModel
+    let selectedMovieDetailModel: SelectedMovieDetailModel
     var body: some View {
-        ZStack{
+        ZStack {
             Color.black
                 .edgesIgnoringSafeArea(.all)
-            VStack{
+            VStack {
                 
                 DownloadedImage(with: selectedMovieDetailModel.moviePosterUrl)
                 
@@ -27,7 +27,6 @@ struct MovieDetailsView: View {
             Spacer()
         }
     }
-    
 }
 
 struct MovieDetailsView_Previews: PreviewProvider {

@@ -8,9 +8,11 @@
 
 import XCTest
 @testable import SearchMovieByName
+
 class SearchMovieNameValidatorTests: XCTestCase {
     
-    var sut : SearchMovieNameValidator!
+    var sut: SearchMovieNameValidator!
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         sut = SearchMovieNameValidator()
@@ -22,31 +24,22 @@ class SearchMovieNameValidatorTests: XCTestCase {
     }
     
     // MARK:- MovieNaneValid
-    func testSearchMovieNameValidator_WhenSearchForValidMovieName_ShouldReturnTrue(){
+    func testSearchMovieNameValidator_WhenSearchForValidMovieName_ShouldReturnTrue() {
         //  Arrange
         
         //  Act
-        
-        let isMoviewNameValid = sut.isSearchMovieNameValid(movieName : "Spider")
-        
+        let isMoviewNameValid = sut.isSearchMovieNameValid(movieName: "Spider")
         // Assert
         XCTAssertTrue(isMoviewNameValid,"The isSearchMovieNameValid() should have returned TRUE for a valid first name but returned FALSE")
-        
     }
     
     // MARK:- MovieNaneNotValid
-    func testSearchMovieNameValidator_WhenSearchForValidMovieName_ShouldReturnFalse(){
+    func testSearchMovieNameValidator_WhenSearchForValidMovieName_ShouldReturnFalse() {
         //  Arrange
         
         //  Act
-        
-        let isNotMoviewNameValid = sut.isSearchMovieNameValid(movieName : "Sp")
-        
+        let isNotMoviewNameValid = sut.isSearchMovieNameValid(movieName: "Sp")
         // Assert
-        
         XCTAssertFalse(isNotMoviewNameValid,"The isSearchMovieNameValid() should have returned FALSE for a valid first name but returned TRUE")
-        
-    }
-    
-    
+    }    
 }

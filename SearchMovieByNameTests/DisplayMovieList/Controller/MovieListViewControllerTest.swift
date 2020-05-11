@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import SearchMovieByName
+
 class MovieListViewControllerTest: XCTestCase {
     
     var storyboard: UIStoryboard!
@@ -18,7 +19,6 @@ class MovieListViewControllerTest: XCTestCase {
         storyboard = UIStoryboard(name: "Main", bundle: nil)
         sut = storyboard.instantiateViewController(identifier: "MovieListViewController") as MovieListViewController
         sut.loadViewIfNeeded()
-        
     }
     
     override func tearDown() {
@@ -27,18 +27,16 @@ class MovieListViewControllerTest: XCTestCase {
         sut = nil
     }
     
-    func testMovieListViewController_WhenCreated_SearchBarTextShouldEmpty() throws{
+    func testMovieListViewController_WhenCreated_SearchBarTextShouldEmpty() throws {
         //Arrange
         let movieNameSearchBar = try XCTUnwrap(sut.movieNameSearchBar,"The MovieNameSearchBar is not connected to an IBOutlet")
         //Act
-        
         //Assert
-        
         XCTAssertEqual(movieNameSearchBar.searchTextField.text,"", "Movie SearchBar was not empty when ViewController firstime loaded")
         XCTAssertNotNil(movieNameSearchBar.delegate,"Movie SearchBar delegate was not connecte")
     }
     
-    func testMovieListViewController_WhenSearcButtonPressed_FetchMovieListcalled(){
+    func testMovieListViewController_WhenSearcButtonPressed_FetchMovieListcalled() {
         //Arrange
         let mockSearchMovieValidator = MockMovieNameValidator()
         let mockSearchWebService = MockSearchMovieNameWebService()
@@ -53,8 +51,5 @@ class MovieListViewControllerTest: XCTestCase {
         //Assert
         XCTAssertTrue(mockSearchMovieListPresnter.processSearchedMovieNameCalled,"The processSearchedMovieName() method does not get called")
         
-        
-        
-    }
-    
+    } 
 }

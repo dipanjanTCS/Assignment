@@ -9,5 +9,5 @@
 import Foundation
 
 protocol SearchMovieNameWebServiceProtocol {
-    func fetchMovieList<T>(using resource : Resource<T>?,completion: @escaping (Result<T,SearchMovieErrors>) -> ())
+    func fetchMovieList<T>(using resource: Resource<T>?,completion: @escaping (Result<T,SearchMovieErrors>) -> ())
 }

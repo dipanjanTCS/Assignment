@@ -9,5 +9,5 @@
 import Foundation
 
 protocol SearchedMovieNameValidatorProtocol {
-    func isSearchMovieNameValid(movieName name : String) -> Bool
+    func isSearchMovieNameValid(movieName name: String) -> Bool
 }

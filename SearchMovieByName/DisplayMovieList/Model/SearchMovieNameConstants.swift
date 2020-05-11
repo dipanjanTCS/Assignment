@@ -9,10 +9,11 @@
 import Foundation
 
 struct SearchMovieNameConstants {
+    
     static let movieNameMinLength = 3
     static let movieMaxLength = 15
     
-    static func getURLString(withMovie name: String) -> String{
+    static func getURLString(withMovie name: String) -> String {
         return "http://www.omdbapi.com/?s=\(name)&apikey=564727fa"
     }
 }
